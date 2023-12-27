@@ -13,8 +13,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "node start",
-    "build": "node build",
+    "start": "npm run start",
+    "build": "npm run build",
     "test": "node test",
     "eject": "node eject"
   },
