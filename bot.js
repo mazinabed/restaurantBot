@@ -103,7 +103,7 @@ app.use(bodyParser.json());
 const webhookPath = "/api";
 
 // Set up the webhook
-bot.telegram.setWebhook(`https://testingbot-8rcz.onrender.com${webhookPath}`);
+bot.telegram.setWebhook(`https://restaurantiq-f4db4a1a7544.herokuapp.com${webhookPath}`);
 
 // Register a route to handle incoming updates from Telegram
 app.post(webhookPath, (req, res) => {
