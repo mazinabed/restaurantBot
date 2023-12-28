@@ -35,6 +35,7 @@ bot.start((ctx) =>
   })
 );
 
+
 bot.on('message', async (ctx) => {
   try {
     // Use 'any' type to avoid TypeScript errors
@@ -44,63 +45,120 @@ bot.on('message', async (ctx) => {
     const phoneNumber = receivedData.phoneNumber;
     const address = receivedData.address;
     const notice = receivedData.notice;
+
+    // Create an array to store the details of each item
+    const orderDetails = [];
+
     for (const item of cartItems) {
       const title = item.title;
       const price = item.price;
       const quantity = item.quantity;
-      //console.log('Received item - Title:', title, 'Price:', price);
 
-      // ctx.replyWithMarkdown(
-      //   `${ctx.from.first_name}\n` +
-      //   `Received item:\n` +
-      //   `- *Title*: ${title}\n` +
-      //   `- *Price*: ${price}\n` +
-      //   `- *Phone Number*: ${phoneNumber}\n` +
-      //   `- *Address*: ${address}`
-      // );
-      ctx.replyWithMarkdown(
-        `${ctx.from.first_name}\n` +
-        `تم ارسال الطلب التالي:\n` +
-        `- *المادة*: ${title}\n` +
-        `- *السعر*: ${price}\n` +
-        `- *العدد*: ${quantity}\n` +
-        `- *رقم الهاتف*: ${phoneNumber}\n` +
-        `- *العنوان*: ${address}\n` +
-        `- *الملاحظات*: ${notice}`
-      );
-      
-      // Prepare a message for the channel
-      const message = `تم استلام طلب جديد:\n` +
+      // Add details to the array
+      orderDetails.push(`- المادة: ${title}, السعر: ${price}, العدد: ${quantity}`);
+    }
+
+    // Join the array elements into a single string
+    const orderMessage = orderDetails.join('\n');
+
+    // Send the order message
+    ctx.replyWithMarkdown(
       `${ctx.from.first_name}\n` +
-      `- المادة: ${title}\n` +
-      `- السعر: ${price}\n` +
-      `- العدد: ${quantity}\n` +
+      `تم ارسال الطلب التالي:\n` +
+      `${orderMessage}\n` +
+      `- *رقم الهاتف*: ${phoneNumber}\n` +
+      `- *العنوان*: ${address}\n` +
+      `- *الملاحظات*: ${notice}`
+    );
+
+    // Prepare a message for the channel
+    const channelMessage = `تم استلام طلب جديد:\n` +
+      `${ctx.from.first_name}\n` +
+      `${orderMessage}\n` +
       `- رقم الهاتف: ${phoneNumber}\n` +
       `- العنوان: ${address}\n` +
       `- الملاحظات: ${notice}`;
-    
-      
-    
-      // const message = `New order received:\n` +
-      //   `${ctx.from.first_name}\n` +
-      //   `- *Title*: ${title}\n` +
-      //   `- *Price*: ${price}\n` +
-      //   `- *Phone Number*: ${phoneNumber}\n` +
-      //   `- *Address*: ${address}`;
 
-      // Add logging
-      console.log('Sending message to channel:', message);
-      try {
-        const result = await bot.telegram.sendMessage(channelId, message, { parse_mode: 'Markdown' });
-        console.log('Telegram API result:', result);
-      } catch (error) {
-        console.error('Telegram API error:', error);
-      }
+    // Log and send the message to the channel
+    console.log('Sending message to channel:', channelMessage);
+    try {
+      const result = await bot.telegram.sendMessage(channelId, channelMessage, { parse_mode: 'Markdown' });
+      console.log('Telegram API result:', result);
+    } catch (error) {
+      console.error('Telegram API error:', error);
     }
   } catch (error) {
     console.error('Error parsing received data:', error);
   }
 });
+
+
+// bot.on('message', async (ctx) => {
+//   try {
+//     // Use 'any' type to avoid TypeScript errors
+//     const receivedData = JSON.parse((ctx.message as any).web_app_data.data);
+
+//     const cartItems = receivedData.cartItems;
+//     const phoneNumber = receivedData.phoneNumber;
+//     const address = receivedData.address;
+//     const notice = receivedData.notice;
+//     for (const item of cartItems) {
+//       const title = item.title;
+//       const price = item.price;
+//       const quantity = item.quantity;
+//       //console.log('Received item - Title:', title, 'Price:', price);
+
+//       // ctx.replyWithMarkdown(
+//       //   `${ctx.from.first_name}\n` +
+//       //   `Received item:\n` +
+//       //   `- *Title*: ${title}\n` +
+//       //   `- *Price*: ${price}\n` +
+//       //   `- *Phone Number*: ${phoneNumber}\n` +
+//       //   `- *Address*: ${address}`
+//       // );
+//       ctx.replyWithMarkdown(
+//         `${ctx.from.first_name}\n` +
+//         `تم ارسال الطلب التالي:\n` +
+//         `- *المادة*: ${title}\n` +
+//         `- *السعر*: ${price}\n` +
+//         `- *العدد*: ${quantity}\n` +
+//         `- *رقم الهاتف*: ${phoneNumber}\n` +
+//         `- *العنوان*: ${address}\n` +
+//         `- *الملاحظات*: ${notice}`
+//       );
+      
+//       // Prepare a message for the channel
+//       const message = `تم استلام طلب جديد:\n` +
+//       `${ctx.from.first_name}\n` +
+//       `- المادة: ${title}\n` +
+//       `- السعر: ${price}\n` +
+//       `- العدد: ${quantity}\n` +
+//       `- رقم الهاتف: ${phoneNumber}\n` +
+//       `- العنوان: ${address}\n` +
+//       `- الملاحظات: ${notice}`;
+    
+      
+    
+//       // const message = `New order received:\n` +
+//       //   `${ctx.from.first_name}\n` +
+//       //   `- *Title*: ${title}\n` +
+//       //   `- *Price*: ${price}\n` +
+//       //   `- *Phone Number*: ${phoneNumber}\n` +
+//       //   `- *Address*: ${address}`;
+
+//       // Add logging
+//       console.log('Sending message to channel:', message);
+//       try {
+//         const result = await bot.telegram.sendMessage(channelId, message, { parse_mode: 'Markdown' });
+//         console.log('Telegram API result:', result);
+//       } catch (error) {
+//         console.error('Telegram API error:', error);
+//       }
+//     }
+//   } catch (error) {
+//     console.error('Error parsing received data:', error);
+//   }
+// });
 
 
 // bot.on('text', (ctx) => {
