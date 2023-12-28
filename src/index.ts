@@ -61,7 +61,7 @@ bot.on('message', async (ctx) => {
       ctx.replyWithMarkdown(
         `${ctx.from.first_name}\n` +
         `تم ارسال الطلب التالي:\n` +
-        `- *العنوان*: ${title}\n` +
+        `- *المادة*: ${title}\n` +
         `- *السعر*: ${price}\n` +
         `- *رقم الهاتف*: ${phoneNumber}\n` +
         `- *العنوان*: ${address}\n` +
@@ -76,6 +76,7 @@ bot.on('message', async (ctx) => {
         `- *رقم الهاتف*: ${phoneNumber}\n` +
         `- *العنوان*: ${address}\n` +
         `- *الملاحظات*: ${notice}`;
+      
     
       // const message = `New order received:\n` +
       //   `${ctx.from.first_name}\n` +
