@@ -66,6 +66,8 @@ bot.on('message', (ctx) => {
         `- *Phone Number*: ${phoneNumber}\n` +
         `- *Address*: ${address}`;
 
+           // Add logging
+      console.log('Sending message to channel:', message);
       bot.telegram.sendMessage(channelId, message, { parse_mode: 'Markdown' });
     }
   } catch (error) {
