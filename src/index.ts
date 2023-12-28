@@ -103,11 +103,11 @@ bot.on('message', async (ctx) => {
 });
 
 
-bot.on('text', (ctx) => {
-  const data = ctx.message.text;
-  console.log('Received data from user:', data);
-  // Process the received data as needed
-});
+// bot.on('text', (ctx) => {
+//   const data = ctx.message.text;
+//   console.log('Received data from user:', data);
+//   // Process the received data as needed
+// });
 
 
 
