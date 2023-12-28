@@ -64,18 +64,18 @@ bot.on('message', async (ctx) => {
         `- *العنوان*: ${title}\n` +
         `- *السعر*: ${price}\n` +
         `- *رقم الهاتف*: ${phoneNumber}\n` +
-        `- *العنوان*: ${address}\n`+
+        `- *العنوان*: ${address}\n` +
         `- *الملاحظات*: ${notice}`
       );
       
-      
+      // Prepare a message for the channel
       const message = `تم استلام طلب جديد:\n` +
-      `${ctx.from.first_name}\n` +
-      `- *المادة: ${title}\n` +
-      `- *السعر*: ${price}\n` +
-      `- *رقم الهاتف*: ${phoneNumber}\n` +
-      `- *العنوان*: ${address}\n`+
-      `- *الملاحظات*: ${notice}`;
+        `${ctx.from.first_name}\n` +
+        `- *المادة: ${title}\n` +
+        `- *السعر*: ${price}\n` +
+        `- *رقم الهاتف*: ${phoneNumber}\n` +
+        `- *العنوان*: ${address}\n` +
+        `- *الملاحظات*: ${notice}`;
     
       // const message = `New order received:\n` +
       //   `${ctx.from.first_name}\n` +
