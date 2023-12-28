@@ -17,67 +17,67 @@ const bot = new Telegraf(BOT_TOKEN);
 // bot.command('Social', Social());
 // bot.command('Training', Trainging());
 // bot.command('Telegram',Bots())
- bot.on('message', greeting());
+ //bot.on('message', greeting());
 
 
 
 
-//const webLink = 'https://testingbot-8rcz.onrender.com';
+const webLink = 'https://testingbot-8rcz.onrender.com';
 const channelId = '@babyloncenter_net'; // Replace with your channel username or ID
 
 
 
-// bot.start((ctx) =>
-//   ctx.reply('Welcome :)))))', {
-//     reply_markup: {
-//       keyboard: [[{ text: 'web app', web_app: { url: webLink } }]],
-//     },
-//   })
-// );
+bot.start((ctx) =>
+  ctx.reply('Welcome :)))))', {
+    reply_markup: {
+      keyboard: [[{ text: 'web app', web_app: { url: webLink } }]],
+    },
+  })
+);
 
-// bot.on('message', (ctx) => {
-//   try {
-//     // Use 'any' type to avoid TypeScript errors
-//     const receivedData = JSON.parse((ctx.message as any).web_app_data.data);
+bot.on('message', (ctx) => {
+  try {
+    // Use 'any' type to avoid TypeScript errors
+    const receivedData = JSON.parse((ctx.message as any).web_app_data.data);
 
-//     const cartItems = receivedData.cartItems;
-//     const phoneNumber = receivedData.phoneNumber;
-//     const address = receivedData.address;
+    const cartItems = receivedData.cartItems;
+    const phoneNumber = receivedData.phoneNumber;
+    const address = receivedData.address;
 
-//     for (const item of cartItems) {
-//       const title = item.title;
-//       const price = item.price;
+    for (const item of cartItems) {
+      const title = item.title;
+      const price = item.price;
 
-//       console.log('Received item - Title:', title, 'Price:', price);
+      console.log('Received item - Title:', title, 'Price:', price);
 
-//       ctx.replyWithMarkdown(
-//         `${ctx.from.first_name}\n` +
-//         `Received item:\n` +
-//         `- *Title*: ${title}\n` +
-//         `- *Price*: ${price}\n` +
-//         `- *Phone Number*: ${phoneNumber}\n` +
-//         `- *Address*: ${address}`
-//       );
+      ctx.replyWithMarkdown(
+        `${ctx.from.first_name}\n` +
+        `Received item:\n` +
+        `- *Title*: ${title}\n` +
+        `- *Price*: ${price}\n` +
+        `- *Phone Number*: ${phoneNumber}\n` +
+        `- *Address*: ${address}`
+      );
 
-//       const message = `New order received:\n` +
-//         `${ctx.from.first_name}\n` +
-//         `- *Title*: ${title}\n` +
-//         `- *Price*: ${price}\n` +
-//         `- *Phone Number*: ${phoneNumber}\n` +
-//         `- *Address*: ${address}`;
+      const message = `New order received:\n` +
+        `${ctx.from.first_name}\n` +
+        `- *Title*: ${title}\n` +
+        `- *Price*: ${price}\n` +
+        `- *Phone Number*: ${phoneNumber}\n` +
+        `- *Address*: ${address}`;
 
-//       bot.telegram.sendMessage(channelId, message, { parse_mode: 'Markdown' });
-//     }
-//   } catch (error) {
-//     console.error('Error parsing received data:', error);
-//   }
-// });
+      bot.telegram.sendMessage(channelId, message, { parse_mode: 'Markdown' });
+    }
+  } catch (error) {
+    console.error('Error parsing received data:', error);
+  }
+});
 
-// bot.on('text', (ctx) => {
-//   const data = ctx.message.text;
-//   console.log('Received data from user:', data);
-//   // Process the received data as needed
-// });
+bot.on('text', (ctx) => {
+  const data = ctx.message.text;
+  console.log('Received data from user:', data);
+  // Process the received data as needed
+});
 
 
 
