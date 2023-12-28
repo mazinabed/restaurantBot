@@ -17,23 +17,23 @@ const bot = new Telegraf(BOT_TOKEN);
 // bot.command('Social', Social());
 // bot.command('Training', Trainging());
 // bot.command('Telegram',Bots())
-// bot.on('message', greeting());
+ bot.on('message', greeting());
 
 
 
 
-const webLink = 'https://testingbot-8rcz.onrender.com';
+//const webLink = 'https://testingbot-8rcz.onrender.com';
 const channelId = '@babyloncenter_net'; // Replace with your channel username or ID
 
 
 
-bot.start((ctx) =>
-  ctx.reply('Welcome :)))))', {
-    reply_markup: {
-      keyboard: [[{ text: 'web app', web_app: { url: webLink } }]],
-    },
-  })
-);
+// bot.start((ctx) =>
+//   ctx.reply('Welcome :)))))', {
+//     reply_markup: {
+//       keyboard: [[{ text: 'web app', web_app: { url: webLink } }]],
+//     },
+//   })
+// );
 
 bot.on('message', (ctx) => {
   try {
