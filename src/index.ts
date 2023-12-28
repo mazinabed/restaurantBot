@@ -43,12 +43,12 @@ bot.on('message', async (ctx) => {
     const cartItems = receivedData.cartItems;
     const phoneNumber = receivedData.phoneNumber;
     const address = receivedData.address;
-
+    const notice = receivedData.notice;
     for (const item of cartItems) {
       const title = item.title;
       const price = item.price;
 
-      console.log('Received item - Title:', title, 'Price:', price);
+      //console.log('Received item - Title:', title, 'Price:', price);
 
       // ctx.replyWithMarkdown(
       //   `${ctx.from.first_name}\n` +
@@ -64,7 +64,8 @@ bot.on('message', async (ctx) => {
         `- *العنوان*: ${title}\n` +
         `- *السعر*: ${price}\n` +
         `- *رقم الهاتف*: ${phoneNumber}\n` +
-        `- *العنوان*: ${address}`
+        `- *العنوان*: ${address}`+
+        `- *الملاحظات*: ${notice}`
       );
       
       
@@ -73,7 +74,8 @@ bot.on('message', async (ctx) => {
       `- *المادة: ${title}\n` +
       `- *السعر*: ${price}\n` +
       `- *رقم الهاتف*: ${phoneNumber}\n` +
-      `- *العنوان*: ${address}`;
+      `- *العنوان*: ${address}\n`+
+      `- *الملاحظات*: ${notice}`;
     
       // const message = `New order received:\n` +
       //   `${ctx.from.first_name}\n` +
