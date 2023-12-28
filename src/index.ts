@@ -50,6 +50,14 @@ bot.on('message', async (ctx) => {
 
       console.log('Received item - Title:', title, 'Price:', price);
 
+      // ctx.replyWithMarkdown(
+      //   `${ctx.from.first_name}\n` +
+      //   `Received item:\n` +
+      //   `- *Title*: ${title}\n` +
+      //   `- *Price*: ${price}\n` +
+      //   `- *Phone Number*: ${phoneNumber}\n` +
+      //   `- *Address*: ${address}`
+      // );
       ctx.replyWithMarkdown(
         `${ctx.from.first_name}\n` +
         `Received item:\n` +
@@ -58,13 +66,20 @@ bot.on('message', async (ctx) => {
         `- *Phone Number*: ${phoneNumber}\n` +
         `- *Address*: ${address}`
       );
-
-      const message = `New order received:\n` +
-        `${ctx.from.first_name}\n` +
-        `- *Title*: ${title}\n` +
-        `- *Price*: ${price}\n` +
-        `- *Phone Number*: ${phoneNumber}\n` +
-        `- *Address*: ${address}`;
+      
+      const message = `تم استلام طلب جديد:\n` +
+      `${ctx.from.first_name}\n` +
+      `- *العنوان*: ${title}\n` +
+      `- *السعر*: ${price}\n` +
+      `- *رقم الهاتف*: ${phoneNumber}\n` +
+      `- *العنوان*: ${address}`;
+    
+      // const message = `New order received:\n` +
+      //   `${ctx.from.first_name}\n` +
+      //   `- *Title*: ${title}\n` +
+      //   `- *Price*: ${price}\n` +
+      //   `- *Phone Number*: ${phoneNumber}\n` +
+      //   `- *Address*: ${address}`;
 
       // Add logging
       console.log('Sending message to channel:', message);
