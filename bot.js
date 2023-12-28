@@ -299,4 +299,22 @@ bot.on('text', (ctx) => {
 
 
 
-bot.launch();
+//bot.launch();
+
+bot.launch({
+  webhook: {
+    // Public domain for webhook; e.g.: example.com
+    domain: "https://testingbot-8rcz.onrender.com/api",
+
+    // Port to listen on; e.g.: 8080
+    port: 3000,
+
+    // Optional path to listen for.
+    // `bot.secretPathComponent()` will be used by default
+   // path: webhookPath,
+
+    // Optional secret to be sent back in a header for security.
+    // e.g.: `crypto.randomBytes(64).toString("hex")`
+    //secretToken: randomAlphaNumericString,
+  },
+});
