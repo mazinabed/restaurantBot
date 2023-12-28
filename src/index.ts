@@ -47,7 +47,7 @@ bot.on('message', async (ctx) => {
     for (const item of cartItems) {
       const title = item.title;
       const price = item.price;
-
+      const quantity = item.quantity;
       //console.log('Received item - Title:', title, 'Price:', price);
 
       // ctx.replyWithMarkdown(
@@ -63,6 +63,7 @@ bot.on('message', async (ctx) => {
         `تم ارسال الطلب التالي:\n` +
         `- *المادة*: ${title}\n` +
         `- *السعر*: ${price}\n` +
+        `- *العدد*: ${quantity}\n` +
         `- *رقم الهاتف*: ${phoneNumber}\n` +
         `- *العنوان*: ${address}\n` +
         `- *الملاحظات*: ${notice}`
@@ -73,6 +74,7 @@ bot.on('message', async (ctx) => {
       `${ctx.from.first_name}\n` +
       `- المادة: ${title}\n` +
       `- السعر: ${price}\n` +
+      `- العدد: ${quantity}\n` +
       `- رقم الهاتف: ${phoneNumber}\n` +
       `- العنوان: ${address}\n` +
       `- الملاحظات: ${notice}`;
