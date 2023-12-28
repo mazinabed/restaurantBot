@@ -60,16 +60,17 @@ bot.on('message', async (ctx) => {
       // );
       ctx.replyWithMarkdown(
         `${ctx.from.first_name}\n` +
-        `Received item:\n` +
-        `- *Title*: ${title}\n` +
-        `- *Price*: ${price}\n` +
-        `- *Phone Number*: ${phoneNumber}\n` +
-        `- *Address*: ${address}`
+        `تم ارسال الطلب التالي:\n` +
+        `- *العنوان*: ${title}\n` +
+        `- *السعر*: ${price}\n` +
+        `- *رقم الهاتف*: ${phoneNumber}\n` +
+        `- *العنوان*: ${address}`
       );
+      
       
       const message = `تم استلام طلب جديد:\n` +
       `${ctx.from.first_name}\n` +
-      `- *العنوان*: ${title}\n` +
+      `- *المادة: ${title}\n` +
       `- *السعر*: ${price}\n` +
       `- *رقم الهاتف*: ${phoneNumber}\n` +
       `- *العنوان*: ${address}`;
