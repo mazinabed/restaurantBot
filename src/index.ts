@@ -28,9 +28,9 @@ const channelId = '@babyloncenter_net'; // Replace with your channel username or
 
 
 bot.start((ctx) =>
-  ctx.reply('Welcome :)))))', {
+  ctx.reply('اهلا وسهلا بكم في مطعمكم!', {
     reply_markup: {
-      keyboard: [[{ text: 'web app', web_app: { url: webLink } }]],
+      keyboard: [[{ text: 'اضغط هنا لفتح قائمة الطعام', web_app: { url: webLink } }]],
     },
   })
 );
@@ -64,7 +64,7 @@ bot.on('message', async (ctx) => {
         `- *العنوان*: ${title}\n` +
         `- *السعر*: ${price}\n` +
         `- *رقم الهاتف*: ${phoneNumber}\n` +
-        `- *العنوان*: ${address}`+
+        `- *العنوان*: ${address}\n`+
         `- *الملاحظات*: ${notice}`
       );
       
