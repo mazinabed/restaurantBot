@@ -42,14 +42,14 @@ const greeting = () => async (ctx: Context) => {
   }
 
   // Add the web app link
-  const webLink = 'https://testingbot-8rcz.onrender.com';
+  //const webLink = 'https://testingbot-8rcz.onrender.com';
   //const channelId = '@babyloncenter_net'; // Replace with your channel username or ID
 
-  ctx.reply('Welcome :)))))', {
-    reply_markup: {
-      keyboard: [[{ text: 'web app', web_app: { url: webLink } }]],
-    },
-  });
+  // ctx.reply('Welcome :)))))', {
+  //   reply_markup: {
+  //     keyboard: [[{ text: 'web app', web_app: { url: webLink } }]],
+  //   },
+  // });
 };
 
 export { greeting };
