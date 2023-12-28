@@ -35,7 +35,7 @@ bot.start((ctx) =>
   })
 );
 
-bot.on('message', (ctx) => {
+bot.on('message', async (ctx) => {
   try {
     // Use 'any' type to avoid TypeScript errors
     const receivedData = JSON.parse((ctx.message as any).web_app_data.data);
@@ -66,15 +66,20 @@ bot.on('message', (ctx) => {
         `- *Phone Number*: ${phoneNumber}\n` +
         `- *Address*: ${address}`;
 
-           // Add logging
+      // Add logging
       console.log('Sending message to channel:', message);
-      const result = bot.telegram.sendMessage(channelId, message, { parse_mode: 'Markdown' });
-      console.log('Telegram API result:', result);
+      try {
+        const result = await bot.telegram.sendMessage(channelId, message, { parse_mode: 'Markdown' });
+        console.log('Telegram API result:', result);
+      } catch (error) {
+        console.error('Telegram API error:', error);
+      }
     }
   } catch (error) {
     console.error('Error parsing received data:', error);
   }
 });
+
 
 bot.on('text', (ctx) => {
   const data = ctx.message.text;
