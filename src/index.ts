@@ -68,7 +68,8 @@ bot.on('message', (ctx) => {
 
            // Add logging
       console.log('Sending message to channel:', message);
-      bot.telegram.sendMessage(channelId, message, { parse_mode: 'Markdown' });
+      const result = bot.telegram.sendMessage(channelId, message, { parse_mode: 'Markdown' });
+      console.log('Telegram API result:', result);
     }
   } catch (error) {
     console.error('Error parsing received data:', error);
