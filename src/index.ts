@@ -22,7 +22,7 @@ const bot = new Telegraf(BOT_TOKEN);
 
 
 
-const webLink = 'https://testingbot-8rcz.onrender.com';
+const webLink = 'https://testingbot-three.vercel.app';
 const channelId = '@babyloncenter_net'; // Replace with your channel username or ID
 
 
